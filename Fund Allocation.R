@@ -3,7 +3,7 @@ library(lubridate)
 library(dplyr)
 library(pivottabler)
 
-raw_data <- read_excel("Z:/Business/Personnel/Saswat/Sizing and Capital Calculator/out2_15jul_7pm.xlsx",sheet="result")
+raw_data <- read_excel("Z:/Sizing Capital/out2_15jul_7pm.xlsx",sheet="result")
 
 colnames(raw_data)[colnames(raw_data) == "Trade Name"] <- "Trade_Name"
 raw_data<-subset(raw_data, Trade_Name!="Total")
@@ -73,4 +73,4 @@ writeData(wb,"result",raw_data,withFilter = TRUE)
 conditionalFormatting(wb, "result", cols=4:length(colnames(raw_data)),rows = (2:nrow(raw_data)+1), rule="<0", style = negStyle)
 conditionalFormatting(wb,"result", cols=4:length(colnames(raw_data)),rows = (2:nrow(raw_data)+1), rule=">=0", style = posStyle)
 
-saveWorkbook(wb,"Z:/Business/Personnel/Ling Yin/Fund Allocation/To_Be_Allocated.xlsx",overwrite = TRUE)
+saveWorkbook(wb,"Z:/Fund Allocation/To_Be_Allocated.xlsx",overwrite = TRUE)
